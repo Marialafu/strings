@@ -16,7 +16,7 @@ knowIfTextHasDot('Hola.adios.')
 
 const sabrinasPassword = (password) => {
     const number = '0123456789'
-    password.length >= 8 && number.includes(password.charAt(0)) ? console.log('Contraseña válida') : console.log('Contraseña incorrecta');
+    password.length > 8 && number.includes(password.charAt(0)) ? console.log('Contraseña válida') : console.log('Contraseña incorrecta');
 }
 sabrinasPassword('Camila')
 sabrinasPassword('1Camilass')
@@ -24,11 +24,10 @@ sabrinasPassword('1Camilass')
 // 4️⃣ Macarena está revisando la gramática de un texto. Si la primera letra de la frase está en mayúscula y la frase termina con un punto, es correcta. Si no, está mal escrita. Crea una función que reciba una frase y determine si cumple ambas reglas.
 
 const findCorrectParagraph = (paragraph) => {
-    paragraph.charAt(0).toUpperCase() && paragraph.endsWith('.') ? console.log('La frase está bien escrita') : console.log('La frase está mal escrita');
+    paragraph.charAt(0) === paragraph.charAt(0).toUpperCase() && paragraph.endsWith('.') ? console.log('La frase está bien escrita') : console.log('La frase está mal escrita');
 }
 findCorrectParagraph('Camila.')
 findCorrectParagraph('1Camilass')
-
 
 // 5️⃣ Abby encontró un mensaje pintado en la pared con dos palabras. Si ambas palabras tienen la misma cantidad de letras, lo tomará como una pista. Si no, lo ignorará. Crea una función que reciba dos palabras y determine si el mensaje es importante.
 
@@ -42,7 +41,6 @@ paintClue('Camila', 'Cincos')
 
 const correctPhoneNumber = (phoneNumber) => {
     phoneNumber.length === 9 ? console.log('Es válido') : console.log('No es válido');
-    ;
 }
 correctPhoneNumber('123456789')
 
@@ -63,11 +61,9 @@ dominioWeb('hola.adios')
 // 8️⃣ Sabrina está revisando una lista de palabras. Si una palabra contiene la letra "z", la marcará como especial. Si no, será una palabra común. Crea una función que reciba una palabra y determine su categoría.
 
 const wordCategory = (word) => {
-    word.includes('z') ? console.log('Palabra especial') : console.log('Palabra común');
+    word.toLowerCase().includes('z') ? console.log('Palabra especial') : console.log('Palabra común');
 }
 wordCategory('azúl')
-
-//como se pondría que vale tanto mayúscula como minúscula. Si pongo word.includes('z').toUpperCase() me da error (aunque solo indique que es para mayúsculas, pero no me deja poner dos funciones en los strings)
 
 const wordCategoryZ = (word) => {
     word.includes('z') || word.includes('Z') ? console.log('Palabra especial') : console.log('Palabra común');
@@ -95,15 +91,13 @@ codeNote('4444')
 // 1️⃣1️⃣ Camila está revisando invitaciones para un evento. Si el nombre del invitado empieza con "A", "E", "I", "O" o "U", se le asignará una mesa especial. Si empieza con otra letra, se le asignará una mesa normal. Crea una función que reciba un nombre y determine su ubicación.
 
 const invitationAsingment = (name) => {
-    const letter = 'A E I O U'
-    letter.includes(name.charAt(0)) ? console.log(name + ' Felicidades, tienes un hueco en la mesa especial') : console.log('Te vas a la mesa de los normalitos');
+    const letters = 'AEIOU'
+    letters.includes(name.charAt(0)) ? console.log(name + ' Felicidades, tienes un hueco en la mesa especial') : console.log('Te vas a la mesa de los normalitos');
 }
 invitationAsingment('Alicia')
 invitationAsingment('Carlos')
 
 // 1️⃣2️⃣ Bego está verificando si un texto contiene lenguaje ofensivo. Si un mensaje contiene la palabra "tonto" o "feo", se marcará como inapropiado. Si no, será aceptado. Crea una función que reciba un mensaje y determine su categoría.
-
-//como se podrían meter las dos palabras en el mismo string
 
 const ofensiveLenguaje = (message) => {
     message.includes('tonto') || message.includes('feo') ? console.log('Tu mensaje es inapropiado') : console.log('Tu mensaje entra dentro del lenguaje inclusive y no ofende a ningune persone')
@@ -114,9 +108,7 @@ ofensiveLenguaje('Te pareces a un orco de mordor')
 // 1️⃣3️⃣ Sabrina quiere imprimir etiquetas con iniciales. Crea una función que reciba un nombre y un apellido y devuelva sus iniciales en mayúsculas, separadas por un punto.
 
 const defineNameLastnameLabel = (name, lastname) => {
-    if (name && lastname){
-        console.log(name.charAt(0) + '.' + lastname.charAt(0));
-    }
+    console.log(name.toUpperCase().charAt(0) + '.' + lastname.toUpperCase().charAt(0));
 }
 defineNameLastnameLabel('Maria', 'Lafuente')
 
@@ -138,8 +130,6 @@ decodeMessage('Te encontraré Abby')
 
 // 1️⃣6️⃣ Camila quiere asegurarse de que los nombres de usuario no contengan espacios. Si un nombre tiene espacios, será inválido. Si no tiene, será aceptado. Crea una función que reciba un nombre de usuario y determine su validez.
 
-//¿Por qué en el 11 no me coge el espacio como caracter pero en este sí?
-
 const confirmValidUserName = (userName) => {
     userName.includes(' ') ? console.log('El nombre de usuario no puede contener espacios') : console.log('Nombre de usuario correcto');
 }
@@ -155,33 +145,23 @@ validCorrectMail('maria@lafu.')
 
 // 1️⃣9️⃣ Macarena está validando números de identificación. Si un número tiene exactamente 8 caracteres y termina en una letra, será válido. Si no cumple estas condiciones, será inválido. Crea una función que reciba un número de identificación y determine si es correcto.
 
-
-
-
-
 //FALTA POR TERMINAR
 
 const validIdentificationNumber = (identificationNumber) => {
     const number = '0123456789'
-    identificationNumber.length !== 8 && number.includes(identificationNumber.charAt(0)) ? console.log('La identificación es inválida') : console.log('La identificación es válida')
+    identificationNumber.length !== 8 && number.includes(identificationNumber.toLowerCase().charAt(identificationNumber.length - 1)) ? console.log('La identificación es inválida') : console.log('La identificación es válida')
 }
-
-validIdentificationNumber('9dfghjuy')
+validIdentificationNumber('9dfghjuY')
 validIdentificationNumber('abcdert56')
 
 
 // 2️⃣0️⃣ Abby encontró una combinación de caja fuerte que parece ser un número de 4 dígitos. Quiere probar combinaciones aleatorias hasta encontrar una que termine en 7. Crea una función que genere un número de 4 dígitos que termine en 7.
 
-//NO SE HACERLO,
-
 const generateRoundNumber = () => {
-    const roundNumber = Math.round(Math.random()*900)
-    console.log(roundNumber);
+    const roundNumber = Math.floor(Math.random()*100)
+    console.log(roundNumber + '7');
 }
 generateRoundNumber()
-const code =  generateRoundNumber + '7'
-
-console.log(code);
 
 
 // 2️⃣1️⃣ Macarena está seleccionando un color al azar para una promoción. Los colores posibles son "Rojo", "Azul", "Verde" y "Amarillo". Crea una función que devuelva uno de estos colores de forma aleatoria.
@@ -198,6 +178,19 @@ const aleatoryColor = () => {
     }
 }
 aleatoryColor('color')
+
+const secondAleatoryColor = () => {
+    const aleatoryNumber = Math.floor(Math.random()*4)
+    if (aleatoryNumber === 0) {
+        console.log('Azul');
+    } else if (aleatoryNumber === 1) {
+        console.log('Rojo');
+    } else if (aleatoryNumber === 2) {
+        console.log('Verde');
+    } else {console.log('Amarillo');
+    }
+}
+secondAleatoryColor('color')
 
 // 2️⃣2️⃣ Sabrina quiere generar una combinación de letras para un código de producto. La combinación debe tener 3 letras aleatorias en mayúsculas. Crea una función que genere y muestre esta combinación.
 
@@ -243,6 +236,9 @@ aleatoryCode()
 
 // 2️⃣5️⃣ Camila quiere generar una clave secreta para una nueva cuenta. La clave debe tener un número aleatorio entre 100 y 999 y una letra aleatoria entre "A" y "Z". Crea una función que genere una clave con ese formato.
 
+const aleatoryDigits = () => {
+    
+}
 
 
 // 2️⃣6️⃣ Macarena quiere jugar al Euromillones, pero como nunca le toca, ha decidido confiar en el destino. Quiere generar 5 números aleatorios entre 1 y 50, asegurándose de que si un número es menor que 10, aparezca con un "0" delante. Por ejemplo, un posible resultado sería: "08 10 33 35 49". Crea una función que genere y muestre esta combinación de números en el formato correcto.
