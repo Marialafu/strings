@@ -16,18 +16,19 @@ knowIfTextHasDot('Hola.adios.')
 
 const sabrinasPassword = (password) => {
     const number = '0123456789'
-    password.length > 8 && number.includes(password.charAt(0)) ? console.log('Contraseña válida') : console.log('Contraseña incorrecta');
+    password.length >= 8 && number.toLowerCase().includes(password.charAt(0)) ? console.log('Contraseña válida') : console.log('Contraseña incorrecta');
 }
-sabrinasPassword('Camila')
+sabrinasPassword('2CATALINA')
 sabrinasPassword('1Camilass')
 
 // 4️⃣ Macarena está revisando la gramática de un texto. Si la primera letra de la frase está en mayúscula y la frase termina con un punto, es correcta. Si no, está mal escrita. Crea una función que reciba una frase y determine si cumple ambas reglas.
 
 const findCorrectParagraph = (paragraph) => {
-    paragraph.charAt(0) === paragraph.charAt(0).toUpperCase() && paragraph.endsWith('.') ? console.log('La frase está bien escrita') : console.log('La frase está mal escrita');
+    paragraph.charAt(0).toUpperCase() && paragraph.endsWith('.') ? console.log('La frase está bien escrita') : console.log('La frase está mal escrita');
 }
 findCorrectParagraph('Camila.')
 findCorrectParagraph('1Camilass')
+
 
 // 5️⃣ Abby encontró un mensaje pintado en la pared con dos palabras. Si ambas palabras tienen la misma cantidad de letras, lo tomará como una pista. Si no, lo ignorará. Crea una función que reciba dos palabras y determine si el mensaje es importante.
 
@@ -41,6 +42,7 @@ paintClue('Camila', 'Cincos')
 
 const correctPhoneNumber = (phoneNumber) => {
     phoneNumber.length === 9 ? console.log('Es válido') : console.log('No es válido');
+    ;
 }
 correctPhoneNumber('123456789')
 
@@ -63,7 +65,9 @@ dominioWeb('hola.adios')
 const wordCategory = (word) => {
     word.toLowerCase().includes('z') ? console.log('Palabra especial') : console.log('Palabra común');
 }
-wordCategory('azúl')
+wordCategory('aZúl')
+
+//como se pondría que vale tanto mayúscula como minúscula. Si pongo word.includes('z').toUpperCase() me da error (aunque solo indique que es para mayúsculas, pero no me deja poner dos funciones en los strings)
 
 const wordCategoryZ = (word) => {
     word.includes('z') || word.includes('Z') ? console.log('Palabra especial') : console.log('Palabra común');
@@ -91,8 +95,8 @@ codeNote('4444')
 // 1️⃣1️⃣ Camila está revisando invitaciones para un evento. Si el nombre del invitado empieza con "A", "E", "I", "O" o "U", se le asignará una mesa especial. Si empieza con otra letra, se le asignará una mesa normal. Crea una función que reciba un nombre y determine su ubicación.
 
 const invitationAsingment = (name) => {
-    const letters = 'AEIOU'
-    letters.includes(name.charAt(0)) ? console.log(name + ' Felicidades, tienes un hueco en la mesa especial') : console.log('Te vas a la mesa de los normalitos');
+    const letter = 'AEIOU'
+    letter.includes(name.toUpperCase().charAt(0)) ? console.log(name + ' Felicidades, tienes un hueco en la mesa especial') : console.log('Te vas a la mesa de los normalitos');
 }
 invitationAsingment('Alicia')
 invitationAsingment('Carlos')
@@ -108,9 +112,9 @@ ofensiveLenguaje('Te pareces a un orco de mordor')
 // 1️⃣3️⃣ Sabrina quiere imprimir etiquetas con iniciales. Crea una función que reciba un nombre y un apellido y devuelva sus iniciales en mayúsculas, separadas por un punto.
 
 const defineNameLastnameLabel = (name, lastname) => {
-    console.log(name.toUpperCase().charAt(0) + '.' + lastname.toUpperCase().charAt(0));
+        console.log(name.toUpperCase().charAt(0) + '.' + lastname.toUpperCase().charAt(0));
 }
-defineNameLastnameLabel('Maria', 'Lafuente')
+defineNameLastnameLabel('maria', 'lafuente')
 
 // 1️⃣4️⃣ Macarena está diseñando una campaña publicitaria. Si el título del anuncio tiene más de 20 caracteres, lo reducirá. Si tiene 20 o menos, lo usará tal cual. Crea una función que reciba un título y determine si debe ajustarse.
 
@@ -130,6 +134,8 @@ decodeMessage('Te encontraré Abby')
 
 // 1️⃣6️⃣ Camila quiere asegurarse de que los nombres de usuario no contengan espacios. Si un nombre tiene espacios, será inválido. Si no tiene, será aceptado. Crea una función que reciba un nombre de usuario y determine su validez.
 
+//¿Por qué en el 11 no me coge el espacio como caracter pero en este sí?
+
 const confirmValidUserName = (userName) => {
     userName.includes(' ') ? console.log('El nombre de usuario no puede contener espacios') : console.log('Nombre de usuario correcto');
 }
@@ -145,41 +151,25 @@ validCorrectMail('maria@lafu.')
 
 // 1️⃣9️⃣ Macarena está validando números de identificación. Si un número tiene exactamente 8 caracteres y termina en una letra, será válido. Si no cumple estas condiciones, será inválido. Crea una función que reciba un número de identificación y determine si es correcto.
 
-//FALTA POR TERMINAR
-
 const validIdentificationNumber = (identificationNumber) => {
     const number = '0123456789'
-    identificationNumber.length !== 8 && number.includes(identificationNumber.toLowerCase().charAt(identificationNumber.length - 1)) ? console.log('La identificación es inválida') : console.log('La identificación es válida')
+    identificationNumber.length === 8 && !number.includes(identificationNumber.charAt(identificationNumber.length - 1)) ? console.log('La identificación es válida') : console.log('La identificación es inválida')
 }
-validIdentificationNumber('9dfghjuY')
+validIdentificationNumber('9dfghjuy')
 validIdentificationNumber('abcdert56')
 
 
 // 2️⃣0️⃣ Abby encontró una combinación de caja fuerte que parece ser un número de 4 dígitos. Quiere probar combinaciones aleatorias hasta encontrar una que termine en 7. Crea una función que genere un número de 4 dígitos que termine en 7.
 
 const generateRoundNumber = () => {
-    const roundNumber = Math.floor(Math.random()*100)
+    const roundNumber = Math.round(Math.random()*1000)
     console.log(roundNumber + '7');
 }
 generateRoundNumber()
 
-
 // 2️⃣1️⃣ Macarena está seleccionando un color al azar para una promoción. Los colores posibles son "Rojo", "Azul", "Verde" y "Amarillo". Crea una función que devuelva uno de estos colores de forma aleatoria.
 
 const aleatoryColor = () => {
-    const aleatoryNumber = Math.random()
-    if (aleatoryNumber > 0.75) {
-        console.log('Azul');
-    } else if (aleatoryNumber > 0.50) {
-        console.log('Rojo');
-    } else if (aleatoryNumber > 0.25) {
-        console.log('Verde');
-    } else {console.log('Amarillo');
-    }
-}
-aleatoryColor('color')
-
-const secondAleatoryColor = () => {
     const aleatoryNumber = Math.floor(Math.random()*4)
     if (aleatoryNumber === 0) {
         console.log('Azul');
@@ -190,15 +180,15 @@ const secondAleatoryColor = () => {
     } else {console.log('Amarillo');
     }
 }
-secondAleatoryColor('color')
+aleatoryColor('color')
 
 // 2️⃣2️⃣ Sabrina quiere generar una combinación de letras para un código de producto. La combinación debe tener 3 letras aleatorias en mayúsculas. Crea una función que genere y muestre esta combinación.
 
-const aleatoryLetters = () => {
-    const aleatoryNumber = Math.round(Math.random()*1000)
-    console.log(aleatoryNumber);
+const aleatoryLettersGenerator = () => {
+    const aleatoryLetters = 'abcdefghijklmñopqrstuvwxyz'
+    console.log(aleatoryLetters.toUpperCase().charAt(Math.random()*27) + aleatoryLetters.toUpperCase().charAt(Math.random()*27) + aleatoryLetters.toUpperCase().charAt(Math.random()*27))
 }
-aleatoryLetters()
+aleatoryLettersGenerator()
 
 // 2️⃣3️⃣ Bego está revisando una lista de verbos para una clase de gramática. Necesita clasificar cada verbo según su conjugación. Crea una función que reciba dos verbos en infinitivo y determine si pertenecen a la primera ("-ar"), segunda ("-er") o tercera ("-ir") conjugación. La función deberá imprimir la clasificación de cada verbo.
 
@@ -236,32 +226,62 @@ aleatoryCode()
 
 // 2️⃣5️⃣ Camila quiere generar una clave secreta para una nueva cuenta. La clave debe tener un número aleatorio entre 100 y 999 y una letra aleatoria entre "A" y "Z". Crea una función que genere una clave con ese formato.
 
-const aleatoryDigits = () => {
-    
+const secretKey = () => {
+    const aleatoryNumber = Math.floor(Math.random()*(900-100)+100)
+    const letters = 'abcdefghijklmnñopqrstuvwxyz'
+    console.log(aleatoryNumber + letters.toUpperCase().charAt(Math.random()*27));
 }
-
+secretKey()
 
 // 2️⃣6️⃣ Macarena quiere jugar al Euromillones, pero como nunca le toca, ha decidido confiar en el destino. Quiere generar 5 números aleatorios entre 1 y 50, asegurándose de que si un número es menor que 10, aparezca con un "0" delante. Por ejemplo, un posible resultado sería: "08 10 33 35 49". Crea una función que genere y muestre esta combinación de números en el formato correcto.
 
+//FALTA POR TERMINAR
+
+const euromillonesNumber = () => {
+    const aleatoryNumber = Math.floor(Math.random()*(50-1)+1)
+    console.log(`${aleatoryNumber} ${aleatoryNumber} ${aleatoryNumber} ${aleatoryNumber}`);
+    if (aleatoryNumber < 10) {
+        `0 ${aleatoryNumber}`
+    } else {aleatoryNumber}
+
+}
+euromillonesNumber()
 
 
 // 2️⃣7️⃣ Sabrina necesita ocultar parte de un número de tarjeta de crédito. Dado un número de 16 dígitos como string, la función debe reemplazar todos los caracteres excepto los últimos 4 con asteriscos. Por ejemplo, "1234567812345678" debe mostrarse como **********5678.
 
+const knowCreditCardNumber = (creditCardNumber) => {
+    creditCardNumber.length === 16 ? console.log('************' + creditCardNumber.substring(creditCardNumber.length - 4)) : console.log('El número de la tarjeta debe contener 16 caracteres');
+}
+knowCreditCardNumber('1234567891234577');
+
 // 2️⃣8️⃣ Camila quiere dividir frases largas en dos partes. Si una frase tiene más de 20 caracteres, debe dividirla en dos partes: los primeros 10 caracteres y el resto, separados por " - ". Si la frase tiene 20 o menos, se devuelve tal cual. Crea una función que realice esta división.
 
 const paragraphDivisor = (paragraph) => {
-
+    paragraph.substring(0,20) 
+    if (paragraph.length === 20) {
+        console.log(paragraph.substring(0, 10) + '-' + paragraph.substring(10, 20)); 
+    } else { console.log(paragraph);
+    }
 }
+paragraphDivisor('12345678912345678901')
+paragraphDivisor('123456789123456789')
 
 // 2️⃣9️⃣ Sabrina está encriptando mensajes secretos. Sabe que todos los mensajes deben tener 4 letras y quiere que cada letra de una palabra se sustituya por la siguiente en el abecedario (por ejemplo, "hola" se convertiría en "ipmb"). Si la letra es "z" o "Z", debe convertirse en "a" o "A" respectivamente. Crea una función que realice esta transformación en una palabra.
+
+const encryptedMessage = (message) => {
+    const letters = 'abcdefghijklmnñopqrstuvwxyz'
+    
+    
+}
 
 
 
 // 3️⃣0️⃣ Bego necesita verificar si dos palabras de 4 letras son palíndromos (es decir, si lee igual de derecha a izquierda y de izquierda a derecha, como "amor" y "roma"). Crea una función que determine si dos palabras son palíndromos.
 
 const palindromeIdentifier = (firstWord, secondWord) => {
-    if (firstWord.includes(firstWord.starsWith())) {
-        console.log('es palíndromo');
+    firstWord.charAt(0) === secondWord.charAt(3) && firstWord.charAt(1) === secondWord.charAt(2) ? console.log(`${firstWord} y ${secondWord} son palíndromos`) : console.log('No se ha encontrado ningún palíndromo')
     }
-}
-palindromeIdentifier('roma, amor')
+
+palindromeIdentifier('roma', 'amor')
+palindromeIdentifier('rmao', 'amor')
