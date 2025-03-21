@@ -158,7 +158,6 @@ const validIdentificationNumber = (identificationNumber) => {
 validIdentificationNumber('9dfghjuy')
 validIdentificationNumber('abcdert56')
 
-
 // 2️⃣0️⃣ Abby encontró una combinación de caja fuerte que parece ser un número de 4 dígitos. Quiere probar combinaciones aleatorias hasta encontrar una que termine en 7. Crea una función que genere un número de 4 dígitos que termine en 7.
 
 const generateRoundNumber = () => {
@@ -212,17 +211,15 @@ const gramaticCorrection = (firstVerb, secondVerb) => {
 }
 gramaticCorrection('corregir', 'andar')
 
-// 2️⃣4️⃣ Abby encontró una caja cerrada con un código de 5 números. Solo uno de cada 5 intentos abrirá la caja. Crea una función que simule 5 intentos y muestre si en alguno se abre la caja o no.
+// 2️⃣4️⃣ Abby encontró una caja cerrada con un código de 5 números. Solo uno de cada 5 intentos abrirá la caja. Crea una función que simule 5 intentos y muestre si en alguno se abre la caja o no. Crear una probabilidad de 5 a 1 donde uno de cada 5 intentos abra la caja.
 
 const aleatoryCode = () => {
-    const firstCode = Math.round(Math.random()*100000)
-    const secondCode = Math.round(Math.random()*100000)
-    const thirdCode = Math.round(Math.random()*100000)
-    const fourthCode = Math.round(Math.random()*100000)
-    const fifthCode = Math.round(Math.random()*100000)
-    console.log(`Intento uno:  ${firstCode}, no válido. Intento dos: ${secondCode}, no válido. Intento tres: ${thirdCode}, no válido. Intento cuatro: ${fourthCode}, no válido. Intento cinco: ${fifthCode}, *abriendo caja*.`);
+    const aleatoryNumber = Math.random()
+    const confirmNumber = aleatoryNumber < 0.2 ? '*Caja abierta' : 'Código incorrecto'
+
+    return confirmNumber
 }
-aleatoryCode()
+console.log(aleatoryCode(), aleatoryCode(), aleatoryCode(), aleatoryCode(), aleatoryCode());
 
 // 2️⃣5️⃣ Camila quiere generar una clave secreta para una nueva cuenta. La clave debe tener un número aleatorio entre 100 y 999 y una letra aleatoria entre "A" y "Z". Crea una función que genere una clave con ese formato.
 
@@ -235,17 +232,15 @@ secretKey()
 
 // 2️⃣6️⃣ Macarena quiere jugar al Euromillones, pero como nunca le toca, ha decidido confiar en el destino. Quiere generar 5 números aleatorios entre 1 y 50, asegurándose de que si un número es menor que 10, aparezca con un "0" delante. Por ejemplo, un posible resultado sería: "08 10 33 35 49". Crea una función que genere y muestre esta combinación de números en el formato correcto.
 
-//FALTA POR TERMINAR
+//CAMINO CORTO - generar una función que englobe la acción primaria para aplicarlo a la función que genera los 5 números
 
-const euromillonesNumber = () => {
+const generateAleatoryNumber = () => {
     const aleatoryNumber = Math.floor(Math.random()*(50-1)+1)
-    console.log(`${aleatoryNumber} ${aleatoryNumber} ${aleatoryNumber} ${aleatoryNumber}`);
-    if (aleatoryNumber < 10) {
-        `0 ${aleatoryNumber}`
-    } else {aleatoryNumber}
+    const loteryNumber = aleatoryNumber < 10 ? `0${aleatoryNumber}` : `${aleatoryNumber}`
 
+    return loteryNumber
 }
-euromillonesNumber()
+console.log(generateAleatoryNumber(), generateAleatoryNumber(), generateAleatoryNumber(), generateAleatoryNumber(), generateAleatoryNumber());
 
 
 // 2️⃣7️⃣ Sabrina necesita ocultar parte de un número de tarjeta de crédito. Dado un número de 16 dígitos como string, la función debe reemplazar todos los caracteres excepto los últimos 4 con asteriscos. Por ejemplo, "1234567812345678" debe mostrarse como **********5678.
@@ -267,14 +262,17 @@ const paragraphDivisor = (paragraph) => {
 paragraphDivisor('12345678912345678901')
 paragraphDivisor('123456789123456789')
 
-// 2️⃣9️⃣ Sabrina está encriptando mensajes secretos. Sabe que todos los mensajes deben tener 4 letras y quiere que cada letra de una palabra se sustituya por la siguiente en el abecedario (por ejemplo, "hola" se convertiría en "ipmb"). Si la letra es "z" o "Z", debe convertirse en "a" o "A" respectivamente. Crea una función que realice esta transformación en una palabra.
+// 2️⃣9️⃣ Sabrina está encriptando mensajes secretos. Sabe que todos los mensajes deben tener 4 letras y quiere que cada letra de una palabra se sustituya por la siguiente en el abecedario (por ejemplo, "hola" se convertiría en "ipmb"). Si la letra es "z" o "Z", debe convertirse en "a" o "A" respectivamente. Crea una función que realice esta transformación en una palabra. Cualquier palabra de 4 letras.
 
 const encryptedMessage = (message) => {
     const letters = 'abcdefghijklmnñopqrstuvwxyz'
+    const nextLetter = letters.indexOf(message.charAt(0))+1
+    console.log(nextLetter);
+    
     
     
 }
-
+encryptedMessage('hola')
 
 
 // 3️⃣0️⃣ Bego necesita verificar si dos palabras de 4 letras son palíndromos (es decir, si lee igual de derecha a izquierda y de izquierda a derecha, como "amor" y "roma"). Crea una función que determine si dos palabras son palíndromos.
