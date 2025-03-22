@@ -264,32 +264,17 @@ paragraphDivisor('123456789123456789')
 
 // 2️⃣9️⃣ Sabrina está encriptando mensajes secretos. Sabe que todos los mensajes deben tener 4 letras y quiere que cada letra de una palabra se sustituya por la siguiente en el abecedario (por ejemplo, "hola" se convertiría en "ipmb"). Si la letra es "z" o "Z", debe convertirse en "a" o "A" respectivamente. Crea una función que realice esta transformación en una palabra. Cualquier palabra de 4 letras.
 
+
 const encryptedMessage = (message) => {
     const letters = 'abcdefghijklmnñopqrstuvwxyz'
     const firstLetterPosition = letters.indexOf(message.charAt(0))+1
     const secondLetterPosition = letters.indexOf(message.charAt(1))+1
+    const thirdLetterPosition = letters.indexOf(message.charAt(2))+1
+    const fourthLetterPosition = letters.indexOf(message.charAt(3))+1
 
-    console.log(letters.charAt(firstLetterPosition) + letters.charAt(secondLetterPosition));
+    console.log(letters.charAt(firstLetterPosition) + letters.charAt(secondLetterPosition) + letters.charAt(thirdLetterPosition) + letters.charAt(fourthLetterPosition));
 }
-encryptedMessage('abcdefghijklmnñopqrstuvwxy')
-
-
-
-const findLetterPosition = () => {
-    const letters = 'abcdefghijklmnñopqrstuvwxyz'
-    const letterPosition = letters.indexOf()
-    return letterPosition
-}
-findLetterPosition('c')
-console.log(findLetterPosition());
-
-
-const transcribeLetterPosition = (findLetterPosition) => {
-    const firstLetterPosition = findLetterPosition.charAt(0)
-    console.log(firstLetterPosition);
-    
-}
-transcribeLetterPosition('v')    
+encryptedMessage('hola')
 
 
 
