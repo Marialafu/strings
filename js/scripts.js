@@ -266,13 +266,31 @@ paragraphDivisor('123456789123456789')
 
 const encryptedMessage = (message) => {
     const letters = 'abcdefghijklmnñopqrstuvwxyz'
-    const nextLetter = letters.indexOf(message.charAt(0))+1
-    console.log(nextLetter);
-    
-    
+    const firstLetterPosition = letters.indexOf(message.charAt(0))+1
+    const secondLetterPosition = letters.indexOf(message.charAt(1))+1
+
+    console.log(letters.charAt(firstLetterPosition) + letters.charAt(secondLetterPosition));
+}
+encryptedMessage('abcdefghijklmnñopqrstuvwxy')
+
+
+
+const findLetterPosition = () => {
+    const letters = 'abcdefghijklmnñopqrstuvwxyz'
+    const letterPosition = letters.indexOf()
+    return letterPosition
+}
+findLetterPosition('c')
+console.log(findLetterPosition());
+
+
+const transcribeLetterPosition = (findLetterPosition) => {
+    const firstLetterPosition = findLetterPosition.charAt(0)
+    console.log(firstLetterPosition);
     
 }
-encryptedMessage('hola')
+transcribeLetterPosition('v')    
+
 
 
 // 3️⃣0️⃣ Bego necesita verificar si dos palabras de 4 letras son palíndromos (es decir, si lee igual de derecha a izquierda y de izquierda a derecha, como "amor" y "roma"). Crea una función que determine si dos palabras son palíndromos.
@@ -281,5 +299,5 @@ const palindromeIdentifier = (firstWord, secondWord) => {
     firstWord.charAt(0) === secondWord.charAt(3) && firstWord.charAt(1) === secondWord.charAt(2) ? console.log(`${firstWord} y ${secondWord} son palíndromos`) : console.log('No se ha encontrado ningún palíndromo')
     }
 
-palindromeIdentifier('roma', 'amor')
-palindromeIdentifier('rmao', 'amor')
+//palindromeIdentifier('roma', 'amor')
+//palindromeIdentifier('rmao', 'amor')
